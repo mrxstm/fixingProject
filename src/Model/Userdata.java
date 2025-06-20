@@ -7,6 +7,8 @@ public class Userdata {
     private String password;
     private String securityAnswer;
     private String username;
+    
+    public Userdata(){} //constructor without parameter so that I can use username and password only in login method in Controller
 
     public Userdata(String fullName, String email,String username, String password, String securityAnswer) {
         this.fullName = fullName;

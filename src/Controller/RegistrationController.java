@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
-import Views.*;
+package Controller;
+import View.*;
 import DAO.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +16,7 @@ import Model.Userdata;
  */
 public class RegistrationController {
     
-    private final UserDao userdao = new UserDao();
+    private final AuthDao userdao = new AuthDao();
     private final Register register;
     
     public RegistrationController(Register register) {
@@ -44,6 +44,7 @@ class AddUserListener implements ActionListener {
             String cpassword = new String(register.getCPasswordField().getPassword());
             String securityAnswer = register.getSecurityQuestion().getText();
             String username = register.getUsernameField().getText();
+            
             Userdata user = new Userdata(fullname, email,username,password, securityAnswer);
             boolean check = userdao.checkUser(user);
 
@@ -53,6 +54,8 @@ class AddUserListener implements ActionListener {
                 
             } else {
                 userdao.register(user);
+                JOptionPane.showMessageDialog(register, "Successfully Registered ! ");
+
             }
 
         

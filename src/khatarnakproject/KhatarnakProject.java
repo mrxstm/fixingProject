@@ -7,8 +7,11 @@ package khatarnakproject;
 import Controller.LoginController;
 import Database.Database;
 import Database.MySqlConnection;
+import View.WelcomeScreen;
 import Views.*;
 import controller.*;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 /**
  *
@@ -22,22 +25,24 @@ public class KhatarnakProject {
  
 public static void main(String[] args) {
         // TODO code application logic here
-        Database db = new MySqlConnection();
-        if(db.openConnection() !=null) {
-            System.out.println("Database connection successfull");
-        } 
-        else {
-            System.out.println("Database connection failed");
-        }
-        
-        Register registerform = new Register();
-        RegistrationController controller = new RegistrationController(registerform);
-        controller.open();
-//      
-//        Login loginform = new Login();
-//        LoginController logincontroller = new LoginController(loginform);
-//        logincontroller.open();
+        try {
+        UIManager.setLookAndFeel(new FlatLightLaf());
+    } catch (Exception ex) {
+        System.err.println("Failed to initialize dark theme.");
+    }
 
+    Database db = new MySqlConnection();
+    if (db.openConnection() != null) {
+        System.out.println("Database connection successful");
+    } else {
+        System.out.println("Database connection failed");
+    }
+
+    SwingUtilities.invokeLater(() -> {
+        WelcomeScreen welcomeScreen = new WelcomeScreen();
+        welcomeScreen.setVisible(true);
+        });
+    }
         
         
 

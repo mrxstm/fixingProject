@@ -4,62 +4,71 @@
  */
 package Controller;
 
-import DAO.UserDao;
+import DAO.AuthDao;
 import Model.LoginModel;
-import Views.Login;
+import Session.Session;
+import View.BookRoomPanel;
+import View.UserDashboard;
+import View.UserLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import java.sql.*;
-import Views.Dashboard;
 
 /**
  *
  * @author Dell
  */
 public class LoginController {
-    private final UserDao userdao = new UserDao();
-    private final Login login;
     
-    public LoginController(Login login) {
-        this.login = login;
-        login.addLoginUserListener(new LoginUserListener());
+    private final AuthDao loginAuth = new AuthDao();
+    private final UserLogin userLogin;
+    private int loggedInUserId = -1;
     
-    }
-    
-      public void open() {
-        this.login.setVisible(true);
+    public LoginController(UserLogin userLogin) {
+        this.userLogin = userLogin;
         
+        userLogin.addLoginListener(new LoginListener());
+    }
+    public void open() {
+        this.userLogin.setVisible(true);
     }
     public void close() {
-        this.login.dispose();
+        this.userLogin.dispose();
     }
-    class LoginUserListener implements ActionListener {
+    public int getLoggedInUserid() {
+        return loggedInUserId;
+    }
+    
+    class LoginListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                String username = login.getUsernameField().getText();
-                String password = new String(login.getPasswordField().getPassword()); 
-                LoginModel user = new LoginModel(username,password);
-                boolean isValid = userdao.login(user);
+            
+            String username = userLogin.getUsername();
+            String password = userLogin.getPassword();
+
+            LoginModel user = new LoginModel();
+            user.setUsername(username);
+            user.setPassword(password);
+            
+            int userId = loginAuth.login(user);
+            if(userId != -1) {
+                Session.getSession().setLoggedInUserId(userId);
                 
-                
-            if (isValid) {
-                JOptionPane.showMessageDialog(login, "Login successful!");
-                Dashboard dashboard = new Dashboard();
-                dashboard.setVisible(true);
-                login.dispose();
+               JOptionPane.showMessageDialog(userLogin, "Login successful!");
+               close();
+               
+               UserDashboard userDashboard = new UserDashboard();
+               userDashboard.setVisible(true);
+               
+               BookRoomPanel bookRoomPanel = new BookRoomPanel();
+               BookingController controller = new BookingController(bookRoomPanel);
+               
             } else {
-                JOptionPane.showMessageDialog(login, "Invalid username or password.");
+               JOptionPane.showMessageDialog(userLogin, "Invalid username or password");
+
                 
-            } 
             }
-            catch(Exception ex) {
-            System.out.println("Error adding user: " + ex.getMessage());
-            JOptionPane.showMessageDialog(login, "Login failed: " + ex.getMessage());
-            }
-        
-         }
+        }
     }
 }
