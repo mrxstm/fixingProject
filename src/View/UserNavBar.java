@@ -12,12 +12,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.List;
 
-
-/**
- *
- * @author Dell
- */
-public class UserDashboard extends javax.swing.JFrame {
+public class UserNavBar extends javax.swing.JFrame {
  DashboardPanel dashboardPanel;
  MyBookingPanel bookingPanel;
  BookRoomPanel roomPanel;
@@ -26,15 +21,8 @@ public class UserDashboard extends javax.swing.JFrame {
  ExpandedMyBookingPanel expandedMyBookingPanel;
   private List<BookingModel> bookings;
   
-
-
-
-    /**
-     * Creates new form UserNavBar
-     */
-    public UserDashboard() {
+    public UserNavBar() {
         initComponents();
-//        CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
 
         menuLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         
@@ -43,20 +31,15 @@ public class UserDashboard extends javax.swing.JFrame {
         
         roomPanel = new BookRoomPanel();
         roomPanel.setVisible(false);
-        
+    
         myProfile = new MyProfilePanel();
         myProfile.setVisible(false);
-        
         
         expandedMyBookingPanel =  new ExpandedMyBookingPanel();
         expandedMyBookingPanel.setVisible(false);
         
-        
         bookingPanel = new MyBookingPanel();
         bookingPanel.setVisible(false);
-      
-      
-
         
        contentPanel.setLayout(new CardLayout());
        contentPanel.add(dashboardPanel, "dashboardPanel");
@@ -64,18 +47,13 @@ public class UserDashboard extends javax.swing.JFrame {
        contentPanel.add(myProfile, "profile");
        contentPanel.add(bookingPanel, "bookingPanel");
        contentPanel.add(expandedMyBookingPanel, "expandedMyBookingPanel");
-        
         this.pack();
         this.setLocationRelativeTo(null);
-        
+      
    BookingController controller = new BookingController(roomPanel);
    ViewBookingController viewBookingController;
    ViewExpandedBookingController detailedcontroller = new ViewExpandedBookingController(expandedMyBookingPanel, this);
    bookingPanel.displayBookings(bookings, detailedcontroller);
-
-
-        
-
     }
 
     /**
@@ -87,15 +65,6 @@ public class UserDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox9 = new javax.swing.JComboBox<>();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
         menuPanel = new javax.swing.JPanel();
         dashboardButton = new javax.swing.JButton();
         menuLabel = new javax.swing.JLabel();
@@ -105,57 +74,9 @@ public class UserDashboard extends javax.swing.JFrame {
         mybookingButton = new javax.swing.JButton();
         footer = new javax.swing.JPanel();
         relax_label = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        auraBookingLogo_label = new javax.swing.JLabel();
         contentPanel = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-
-        jLabel7.setText("jLabel7");
-
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox5ActionPerformed(evt);
-            }
-        });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
-            }
-        });
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox4ActionPerformed(evt);
-            }
-        });
-
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox9ActionPerformed(evt);
-            }
-        });
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("User Dashboard");
@@ -280,8 +201,8 @@ public class UserDashboard extends javax.swing.JFrame {
         relax_label.setText("\"Relax. Recharge. Remember.\"");
         footer.add(relax_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 220, 40));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/footer.png"))); // NOI18N
-        footer.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 140, 80));
+        auraBookingLogo_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/footer.png"))); // NOI18N
+        footer.add(auraBookingLogo_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 140, 80));
 
         contentPanel.setBackground(new java.awt.Color(217, 217, 217));
         contentPanel.setLayout(new java.awt.CardLayout());
@@ -320,130 +241,49 @@ public class UserDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
-        // TODO add your handling code here:
-     
         CardLayout c1 = (CardLayout) contentPanel.getLayout();
         c1.show(contentPanel, "dashboardPanel");
-        
     }//GEN-LAST:event_dashboardButtonActionPerformed
 
     private void mybookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mybookingButtonActionPerformed
-        // TODO add your handling code here:
        CardLayout c2 = (CardLayout) contentPanel.getLayout();
         c2.show(contentPanel, "bookingPanel");
-        
         viewBookingController = new ViewBookingController(bookingPanel, this, expandedMyBookingPanel); 
-            
-       
     }//GEN-LAST:event_mybookingButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
-
-         this.dispose(); 
+        this.dispose(); 
         UserLogin userLogin = new UserLogin();
         userLogin.setVisible(true);
-
-
-
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void profileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileButtonActionPerformed
-        // TODO add your handling code here:
-         CardLayout c3 = (CardLayout) contentPanel.getLayout();
+        CardLayout c3 = (CardLayout) contentPanel.getLayout();
         c3.show(contentPanel, "profile");
-        
         myProfile.refreshProfile(); 
 
     }//GEN-LAST:event_profileButtonActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
-
-    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox4ActionPerformed
-
-    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox5ActionPerformed
-
-    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox9ActionPerformed
 
     private void bookroomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookroomButtonActionPerformed
         // TODO add your handling code here:
         CardLayout c4 = (CardLayout) contentPanel.getLayout();
         c4.show(contentPanel, "bookRoom");
-        
-
-      
-     
     }//GEN-LAST:event_bookroomButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+    public static void main(String args[]) {  
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserDashboard().setVisible(true);
+                new UserNavBar().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel auraBookingLogo_label;
     private javax.swing.JButton bookroomButton;
     private javax.swing.JPanel contentPanel;
     private javax.swing.JButton dashboardButton;
     private javax.swing.JPanel footer;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox9;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton logoutButton;
     private javax.swing.JLabel menuLabel;
@@ -452,13 +292,7 @@ public class UserDashboard extends javax.swing.JFrame {
     private javax.swing.JButton profileButton;
     private javax.swing.JLabel relax_label;
     // End of variables declaration//GEN-END:variables
-//public void showExpandedBookingPanel() {
-//   
-//
-//     CardLayout c5 = (CardLayout) contentPanel.getLayout();
-//        c5.show(contentPanel, "expandedMyBookingPanel");
-//              
-//}
+
 
 public void showExpandedBookingPanel(BookingModel bookingData) {
     

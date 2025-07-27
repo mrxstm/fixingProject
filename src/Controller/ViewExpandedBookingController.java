@@ -7,7 +7,7 @@ package Controller;
 import DAO.BookingDao;
 import View.ExpandedMyBookingPanel;
 import Model.BookingModel;
-import View.UserDashboard;
+import View.UserNavBar;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,10 +17,10 @@ import javax.swing.JOptionPane;
 public class ViewExpandedBookingController {
     private final BookingDao bookingDao;
     private final ExpandedMyBookingPanel expandedBookingPanel;
-    private final UserDashboard userDashboard;
+    private final UserNavBar userDashboard;
 
     
-    public ViewExpandedBookingController(ExpandedMyBookingPanel expandedBookingPanel, UserDashboard userDashboard) {
+    public ViewExpandedBookingController(ExpandedMyBookingPanel expandedBookingPanel, UserNavBar userDashboard) {
         this.expandedBookingPanel = expandedBookingPanel;
         this.userDashboard = userDashboard;
         this.bookingDao = new BookingDao();

@@ -4,13 +4,11 @@
  */
 package View;
 
-import DAO.BookingDao;
 import Model.BookingModel;
 import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -29,8 +27,7 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
      */
     public ExpandedMyBookingPanel() {
         initComponents();
-        String bookingId = this.getBookingId();
-        loadBookingData(bookingId);
+        cancelEditButton.setVisible(false);
     }
 
     /**
@@ -69,8 +66,9 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
         jLabel13 = new javax.swing.JLabel();
         roomNumber_field = new javax.swing.JTextField();
         guestSpinner = new javax.swing.JSpinner();
+        cancelEditButton = new javax.swing.JButton();
         editBookingButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cancelBookingButton = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -119,7 +117,6 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
 
         bookingId.setEditable(false);
         bookingId.setBackground(new java.awt.Color(255, 255, 255));
-        bookingId.setText("bookingId");
         bookingId.setBorder(null);
         bookingId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +197,13 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
             }
         });
 
+        cancelEditButton.setText("cancel edit");
+        cancelEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelEditButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -249,7 +253,9 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(status)
                                         .addGap(18, 18, 18)
-                                        .addComponent(payNow))))
+                                        .addComponent(payNow)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(cancelEditButton))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -260,7 +266,7 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(roomNumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(136, 136, Short.MAX_VALUE))
+                .addGap(97, 97, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -312,8 +318,9 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(status)
-                    .addComponent(payNow, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
+                    .addComponent(payNow, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelEditButton))
+                .addGap(31, 31, 31))
         );
 
         editBookingButton.setBackground(new java.awt.Color(72, 99, 127));
@@ -326,13 +333,13 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(194, 111, 111));
-        jButton2.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(217, 217, 217));
-        jButton2.setText("Cancel booking");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cancelBookingButton.setBackground(new java.awt.Color(194, 111, 111));
+        cancelBookingButton.setFont(new java.awt.Font("Comic Sans MS", 1, 12)); // NOI18N
+        cancelBookingButton.setForeground(new java.awt.Color(217, 217, 217));
+        cancelBookingButton.setText("Cancel booking");
+        cancelBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelBookingButtonActionPerformed(evt);
             }
         });
 
@@ -353,12 +360,12 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(editBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cancelBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10))
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(62, 62, 62)
                 .addComponent(jLabel12)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +381,7 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(editBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cancelBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -383,9 +390,9 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
         // TODO add your handling code here:
     }//GEN-LAST:event_editBookingButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cancelBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBookingButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_cancelBookingButtonActionPerformed
 
     private void bookingIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookingIdActionPerformed
         // TODO add your handling code here:
@@ -397,6 +404,9 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
         PaymentPage paymentPage = new PaymentPage(Integer.parseInt(bookingId.getText()));
         paymentPage.setVisible(true);
         
+        payNow.setEnabled(false);
+        
+              
     }//GEN-LAST:event_payNowActionPerformed
 
     private void checkInDateCalendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_checkInDateCalendarPropertyChange
@@ -444,9 +454,15 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
         guests.setText(String.valueOf(value));
     }//GEN-LAST:event_guestSpinnerStateChanged
 
+    private void cancelEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelEditButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelEditButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bookingId;
+    private javax.swing.JButton cancelBookingButton;
+    private javax.swing.JButton cancelEditButton;
     private javax.swing.JTextField checkInDate;
     private com.toedter.calendar.JDateChooser checkInDateCalendar;
     private javax.swing.JTextField checkOutDate;
@@ -455,7 +471,6 @@ public class ExpandedMyBookingPanel extends javax.swing.JPanel{
     private javax.swing.JButton editBookingButton;
     private javax.swing.JSpinner guestSpinner;
     private javax.swing.JTextField guests;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -535,6 +550,7 @@ public JSpinner getGuestSpinner() {
 
 public void setBookingData(BookingModel booking) {
     bookingId.setText(String.valueOf(booking.getBookingId()));
+    roomNumber_field.setText(String.valueOf(booking.getRoomId()));
     roomType_field.setText(booking.getRoomType());
     customerId.setText(String.valueOf(booking.getUserId()));
     guests.setText(String.valueOf(booking.getGuestCount()));
@@ -542,6 +558,17 @@ public void setBookingData(BookingModel booking) {
     checkOutDate.setText(booking.getCheckOutDate());
     price.setText(String.valueOf(booking.getPrice()));
     status.setText(booking.getStatus());
+    
+     if ("Cancelled".equalsIgnoreCase(booking.getStatus()) || "Paid and Booked".equalsIgnoreCase(booking.getStatus())) {
+        editBookingButton.setEnabled(false);
+        payNow.setEnabled(false);
+    } else {
+        editBookingButton.setEnabled(true);
+        payNow.setEnabled(true);
+
+
+    }
+  
 }
 
 public String getSelectedRoomType() {
@@ -616,25 +643,17 @@ public void refreshDisplay(BookingModel bookingModel) {
             JOptionPane.ERROR_MESSAGE);
     }
 }
-private void loadBookingData(String bookingId) {
-    try {
-        BookingDao bookingDao = new BookingDao();
-        BookingModel booking = bookingDao.getBookingById(bookingId);
-        
-        if(booking != null) {
-            roomNumber_field.setText(String.valueOf(booking.getRoomId()));
-            guests.setText(String.valueOf(booking.getGuestCount()));
-            checkInDate.setText(booking.getCheckInDate());
-            checkOutDate.setText(booking.getCheckOutDate());
-        } else {
-            System.out.println("Booking not found for ID: " + bookingId);
-        }
-    } catch (Exception e) {
-        System.err.println("Error loading booking data: " + e.getMessage());
-        e.printStackTrace();
+public void addCancelBookingListener(ActionListener listener) {
+        cancelBookingButton.addActionListener(listener);
     }
+
+public JButton getCancelEditButton() {
+    return cancelEditButton;
 }
 
+public void addCancelEditListener(ActionListener listener) {
+    cancelEditButton.addActionListener(listener);
+}
 
 
 
