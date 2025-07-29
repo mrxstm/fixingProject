@@ -8,8 +8,9 @@ import Controller.LoginController;
 import Database.Database;
 import Database.MySqlConnection;
 import View.WelcomeScreen;
-import Views.*;
-import controller.*;
+import View.*;
+import com.formdev.flatlaf.FlatLightLaf;
+import Controller.*;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -49,6 +50,5 @@ public static void main(String[] args) {
 
     }
 
-}
-    
+  
 

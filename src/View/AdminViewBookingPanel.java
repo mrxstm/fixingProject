@@ -228,17 +228,17 @@ public class AdminViewBookingPanel extends javax.swing.JPanel {
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchFieldActionPerformed
-
+    
     private void searchFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusGained
         // TODO add your handling code here:
-        if(searchField.getText().equals("Search")) {
+       if(searchField.getText().equals("Search")) {
             searchField.setText("");
         }
     }//GEN-LAST:event_searchFieldFocusGained
 
     private void searchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFieldFocusLost
         // TODO add your handling code here:
-          if(searchField.getText().equals("")) {
+         if(searchField.getText().equals("")) {
             searchField.setText("Search");
         }
     }//GEN-LAST:event_searchFieldFocusLost

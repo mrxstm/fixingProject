@@ -153,13 +153,12 @@ public class InvoiceModel {
      public double getServiceCharge() {
         return serviceCharge;
     }
-
     public void setServiceCharge(double serviceCharge) {
         this.serviceCharge = serviceCharge;
     }
-
+}
 
     
  
 
-}
+

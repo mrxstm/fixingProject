@@ -23,7 +23,7 @@ public class MySqlConnection implements Database {
        
      
         String username = "root";
-        String password = "satyam123";
+        String password = "root12";
         String database = "auraadmin";
         String url = "jdbc:mysql://127.0.0.1:3306/"+database;
         

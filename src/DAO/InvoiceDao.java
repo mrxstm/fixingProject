@@ -21,7 +21,7 @@ public class InvoiceDao {
    
     public void addInvoice(InvoiceModel invoiceModel) {
         Connection conn = connection.openConnection();
-        String sql = "INSERT INTO Invoice(booking_id,room_id, invoice_date, tax, room_charges, service_charges, total_amount, payment_method) VALUES(?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Invoices(booking_id,room_id, invoice_date, tax, room_charges, service_charges, total_amount, payment_method) VALUES(?,?,?,?,?,?,?,?)";
         
         try(PreparedStatement pstmt = conn.prepareStatement(sql)) {
             
@@ -48,7 +48,7 @@ public class InvoiceDao {
         Connection conn = connection.openConnection();
         InvoiceModel invoiceModel = null;
         
-        String sql = "SELECT * FROM Invoice where user_id = ?";
+        String sql = "SELECT * FROM Invoices where user_id = ?";
         
         try(PreparedStatement ptsmt = conn.prepareStatement(sql)) {
             int userId = Session.getSession().getLoggedInUserId();
